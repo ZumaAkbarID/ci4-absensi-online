@@ -44,9 +44,14 @@ $routes->group('admin', function ($routes) {
 
     $routes->add('pengajar', 'Admin\Pengajar::index');
     $routes->add('detailPengajar/(:num)', 'Admin\Pengajar::detail/$1');
+    $routes->add('ubahPengajar/(:num)', 'Admin\Pengajar::ubah/$1');
 
     $routes->add('siswa', 'Admin\Siswa::index');
     $routes->add('detailSiswa/(:num)', 'Admin\Siswa::detail/$1');
+});
+
+$routes->group('pengajar', function ($routes) {
+    $routes->add('', 'Pengajar\Dashboard::dashboard');
 });
 
 /*

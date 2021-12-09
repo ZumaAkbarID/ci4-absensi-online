@@ -31,7 +31,7 @@ class Siswa extends BaseController
         $this->data['absensi'] = $this->absensiModel;
         $this->data['kelas'] = $this->kelasModel;
 
-        return view('admin/siswa', $this->data);
+        return view('Admin/siswa', $this->data);
     }
 
     public function detail($id)
@@ -41,6 +41,10 @@ class Siswa extends BaseController
         }
 
         $siswa = $this->siswaModel->where('id', $id)->first();
+
+        if ($siswa->updated_at == null) {
+            $updated_at = 'Belum ada perubahan';
+        }
 
         $data = [
             'id' => $siswa->id,
@@ -58,7 +62,7 @@ class Siswa extends BaseController
             'status' => $siswa->status,
             'avatar' => $siswa->avatar,
             'created_at' => $siswa->created_at,
-            'updated_at' => $siswa->updated_at
+            'updated_at' => $updated_at
         ];
 
         echo json_encode($data);

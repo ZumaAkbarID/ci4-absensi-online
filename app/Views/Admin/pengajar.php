@@ -1,15 +1,14 @@
-<?= $this->extend('admin/templates/layout'); ?>
+<?= $this->extend('templates/layout'); ?>
 <?= $this->section('content'); ?>
 <!-- Main Content -->
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Pengajar</h1>
+            <h1>Ubah Pengajar</h1>
         </div>
 
         <div class="section-body">
             <h2 class="section-title">Data Pengajar</h2>
-            </p>
 
             <div class="row">
                 <div class="col-12">
@@ -73,7 +72,8 @@
                                                 <?php endif; ?>
                                             </td>
                                             <td><button onclick="detailPengajar(<?= $pengajars->id; ?>)"
-                                                    class="btn btn-secondary">Detail</button> | <a href="#"
+                                                    class="btn btn-secondary">Detail</button> | <a
+                                                    href="<?= base_url('admin/ubahPengajar'); ?>/<?= $pengajars->id; ?>"
                                                     class="btn btn-primary">Ubah</a>
                                             </td>
                                         </tr>

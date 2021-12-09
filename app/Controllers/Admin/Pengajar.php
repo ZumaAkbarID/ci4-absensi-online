@@ -29,7 +29,7 @@ class Pengajar extends BaseController
         $this->data['pengajar'] = $this->pengajarModel;
         $this->data['absensi'] = $this->absensiModel;
 
-        return view('admin/pengajar', $this->data);
+        return view('Admin/pengajar', $this->data);
     }
 
     public function detail($id)
@@ -55,5 +55,19 @@ class Pengajar extends BaseController
         ];
 
         echo json_encode($data);
+    }
+
+    public function ubah($id)
+    {
+        if ($id == null) {
+            return redirect()->to('admin/pengajar');
+        }
+
+        $this->data['title'] = 'Ubah Pengajar | Admin Dashboard';
+        $this->data['page'] = 'users';
+        $this->data['subpage'] = 'pengajar';
+        $this->data['dataPengajar'] = $this->pengajarModel->where('id', $id)->first();
+
+        return view('admin/pengajarUbah', $this->data);
     }
 }
