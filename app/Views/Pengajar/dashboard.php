@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Siswa Aktif</h4>
+                            <h4>Siswa Dalam Kelas Anda</h4>
                         </div>
                         <div class="card-body">
                             <?= $siswa->where('status', 'Aktif')->countAll(); ?>
@@ -29,10 +29,10 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Mapel</h4>
+                            <h4>Mapel</h4>
                         </div>
                         <div class="card-body">
-                            <?= $mapel->countAll(); ?>
+                            Abc
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Absensi</h4>
+                            <h4>Total Absensi Mapel Anda</h4>
                         </div>
                         <div class="card-body">
                             <?= $absensi->countAll(); ?>
@@ -59,10 +59,10 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Pengajar Aktif</h4>
+                            <h4>belum tau</h4>
                         </div>
                         <div class="card-body">
-                            <?= $pengajar->where('status', 'Aktif')->countAllResults(); ?>
+                            47
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Total Absensi per-Mapel</h4>
+                        <h4>Total Absensi per-Kelas</h4>
                     </div>
                     <div class="card-body">
 
@@ -102,7 +102,7 @@
                     <div class="card-header">
                         <h4>Absensi terbaru</h4>
                         <div class="card-header-action">
-                            <a href="<?= base_url('admin/absensi'); ?>" class="btn btn-primary">Lihat Semua</a>
+                            <a href="<?= base_url('pengajar/absensi'); ?>" class="btn btn-primary">Lihat Semua</a>
                         </div>
                     </div>
                     <div class="card-body p-0">

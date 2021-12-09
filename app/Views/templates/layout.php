@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/modules/jqvmap/dist/jqvmap.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/modules/weather-icon/css/weather-icons.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/modules/weather-icon/css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/modules/dropzonejs/min/dropzone.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/modules/summernote/summernote-bs4.css">
 
     <!-- Template CSS -->
@@ -62,6 +63,7 @@
     <script src="<?= base_url(); ?>/assets/modules/chart.min.js"></script>
     <script src="<?= base_url(); ?>/assets/modules/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="<?= base_url(); ?>/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="<?= base_url(); ?>/assets/modules/dropzonejs/min/dropzone.min.js"></script>
     <script src="<?= base_url(); ?>/assets/modules/summernote/summernote-bs4.js"></script>
     <script src="<?= base_url(); ?>/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 
@@ -86,12 +88,46 @@
                 txt = '<ul class="text-left unlisted"><li>NIP : ' + data.nip + '</li><li>Nama : ' + data
                     .nama + '</li>' + '<li>Email : ' + data.email + '</li><li>TTL : ' + data.ttl + '</li>' +
                     '<li>Agama : ' + data.agama + '</li><li>Telp : ' + data.tlp + '</li>' +
-                    '<li>Status : ' + data.status + '</li><li>Created_at : ' + data.created_at + '</li>' +
-                    '<li>Updated_at : ' + data.updated_at + '</li>';
+                    '<li>Status : ' + data.status + '</li><li>Data dibuat pada : ' + data.created_at +
+                    '</li>' +
+                    '<li>Data diperbarui pada : ' + data.updated_at + '</li>';
                 Swal.fire({
-                    title: data.id,
+                    title: 'ID : ' + data.id,
                     html: txt,
                     imageUrl: '<?= base_url(); ?>/data/img/avatar/pengajar/' + data.avatar,
+                    imageWidth: 400,
+                    imageHeight: 400,
+                    imageAlt: data.nama,
+                })
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+            }
+        })
+    }
+
+    function detailSiswa(id) {
+        $.ajax({
+            url: '<?= base_url() . '/admin/detailSiswa/'; ?>' + id,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function(data) {
+                var txt;
+                txt = '<ul class="text-left unlisted"><li>NIS : ' + data.nis + '</li><li>Nama : ' + data
+                    .nama + '</li>' + '<li>TTL : ' + data.ttl + '</li><li>Agama : ' + data.agama +
+                    '</li>' +
+                    '<li>No. Telp : ' + data.telp_siswa + '</li><li>No. Telp Ortu : ' + data.telp_ortu +
+                    '</li>' +
+                    '<li>Alamat Siswa : ' + data.alamat_siswa + '</li>' + '<li>Nama Ayah : ' + data
+                    .nama_ayah + '</li>' + '<li>Nama Ibu : ' + data.nama_ibu + '</li>' +
+                    '<li>Alamat Ortu : ' + data.alamat_ortu + '</li>' +
+                    '<li>Status : ' + data.status + '</li>' + '<li>Data dibuat pada : ' + data
+                    .created_at +
+                    '</li>' + '<li>Data diperbarui pada : ' + data.updated_at + '</li>';
+                Swal.fire({
+                    title: 'ID : ' + data.id,
+                    html: txt,
+                    imageUrl: '<?= base_url(); ?>/data/img/avatar/siswa/' + data.avatar,
                     imageWidth: 400,
                     imageHeight: 400,
                     imageAlt: data.nama,

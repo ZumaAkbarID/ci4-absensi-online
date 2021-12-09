@@ -5,4 +5,6 @@
  * 
  */
 
-"use strict";
+// Dropzone
+
+'use strict';
